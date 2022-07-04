@@ -21,8 +21,7 @@ public class feedbackdb implements Serializable {
     private String email;
     @Column(name = "message")
     private String message;
-    @Column(name = "regarding")
-    private Integer regarding;
+
     @Column(name = "code")
     private String code;
     @Column(name = "rating")

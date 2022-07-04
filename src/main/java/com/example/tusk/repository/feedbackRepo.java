@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @ComponentScan("com.example")
 @Repository
 public interface feedbackRepo extends CrudRepository<feedbackdb,Integer> {
-    feedbackdb findRating(Integer rating);
+    //feedbackdb findRating(Integer rating);
 
 }

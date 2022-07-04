@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
 
 public class indexController {
     @Autowired
@@ -18,16 +22,20 @@ public class indexController {
         return "index.html";
     }*/
     @PostMapping("/submit")
-    public String addFeedback(@RequestParam String name, @RequestParam String email, @RequestParam String message, @RequestParam Integer regarding, @RequestParam String code, @RequestParam Integer rating)
+    public String addFeedback(@RequestParam String name, @RequestParam String email/*, @RequestParam int code*/,@RequestParam String msg,  @RequestParam String star) throws Exception
     {
-        feedbackdb feedback = new feedbackdb();
-        feedback.setName(name);
-        feedback.setCode(code);
-        feedback.setEmail(email);
-        feedback.setRating(rating);
-        feedback.setMessage(message);
-        feedback.setRegarding(regarding);
-        feedbackrepo.save(feedback);
-        return "index.html";
+        try {
+            feedbackdb feedback = new feedbackdb();
+            feedback.setName(name);
+            //feedback.setCode(code);
+            feedback.setEmail(email);
+            //feedback.setRating(star);
+            feedback.setMessage(msg);
+            //feedback.setRegarding(regarding);
+            feedbackrepo.save(feedback);
+            return "index.html";
+        } catch(Exception e){
+            throw e;
+        }
     }
 }
