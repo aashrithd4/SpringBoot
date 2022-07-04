@@ -38,4 +38,9 @@ public class indexController {
             throw e;
         }
     }
+    @GetMapping("/list")
+    public Iterable<feedbackdb> getFeedback(){
+        return feedbackrepo.findAll();
+    }
+
 }
